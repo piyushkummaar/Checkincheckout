@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <div class="row">
+  <div class="col-sm-9 col-md-5 col-lg-9 mx-auto">
+   <div class="card card-signin my-5">
+     <div class="card-body">
+        <h2>{{title}}</h2>
+{% if confirm_message %}
+<p>{{confirm_message}}</p>
+for back to profile <a href="{% url 'employees'%}">click here!!</a>
+{% endif %}
+{%if form%}
+<form id="form1" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %} <!--token that make sure that other server doesn't sent the data-->
+    {{ form|crispy }}
+    <input style="width:200px" class="btn btn-primary" type="submit" value="Submit"/>
+</form>
+{%endif%}
+     </div>
+   </div>
+  </div>
+  </div>
+</div>
+{% endblock %}
